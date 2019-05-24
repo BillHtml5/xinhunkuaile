@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>祝你俩白头偕老</title>
+    <style>
+        body {
+            background: #000;
+            font-size: 70px;
+            color: red;
+            font-family: 'kaiti';
+            font-weight: bold;
+        }
+        
+        #box {
+            width: 80%;
+            margin: 10px auto;
+            line-height: 100px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: red;
+            display: none;
+            font-size: 100px;
+        }
+        
+       
+    </style>
+</head>
+
+<body>
+    
+
+    <h1>新婚快乐</h1>
+    <div id="box"></div>
+    <script>
+        var str = `
+         1、托清风捎去衷心的祝福，让流云奉上真挚的情意；今夕何夕，空气里都充满了醉人的甜蜜。谨祝我最亲爱的朋友，从今后，爱河永浴！<br> 
+  2019.1.17<br> 
+        
+        `
+        var box = document.getElementById('box');
+        var h1 = document.querySelector('h1')
+        var count = 0;
+        var newsre = '';
+        var temer = null;
+        setTimeout(() => {
+            setInterval(auto, 150);
+            h1.style.display = 'block'
+
+            function auto() {
+                count++;
+                newstr = str.substring(0, count);
+                box.innerHTML = newstr;
+                if (count > str.length) {
+                    count = 0;
+                }
+            }
+
+            function ran(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) - min)
+            }
+            re()
+
+            function re() {
+                temer = setInterval(() => {
+                    var r = ran(0, 255),
+                        g = ran(0, 255),
+                        b = ran(0, 255);
+                    document.body.style.color = `rgb(${r},${g},${b})`
+                }, 500);
+            }
+            var flag = true;
+            btn.onclick = function() {
+                if (flag) {
+                    clearInterval(temer)
+                    this.innerHTML = '点击开启随机颜色'
+                    this.style.color = 'aqua'
+                    flag = false;
+                } else {
+                    re()
+                    this.innerHTML = '点击关闭随机颜色'
+                    this.style.color = 'purple'
+                    flag = true;
+                }
+            }
+
+            var fla = true;
+            bt.onclick = function() {
+                if (fla) {
+                    this.innerHTML = '粉色'
+                    this.style.color = '#FF0033'
+                    h1.style.color = '#000'
+                    document.body.style.background = '#FF0033'
+                    fla = false;
+                } else {
+                    this.innerHTML = '黑色'
+                    this.style.color = '#000'
+                    h1.style.color = 'red'
+                    document.body.style.background = '#000'
+                    fla = true;
+                }
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
